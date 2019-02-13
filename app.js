@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-//cors = require('cors');
+cors = require('cors');
 var favicon = require('serve-favicon');
 var routes = require('./routes');
 var http = require('http');
