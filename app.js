@@ -7,7 +7,7 @@ var favicon = require('serve-favicon');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-var morgan = require('morgan');
+
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var serveStatic = require('serve-static');
@@ -21,6 +21,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 //app.use(express.favicon());
+var morgan = require('morgan');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(methodOverride());
@@ -33,6 +34,11 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 if ('development' == app.get('env')) {
   app.use(errorhandler());
 }
+
+// app.get('/', function (req, res) {
+//    res.send('Hello World');
+// })
+
 
 app.get('/', routes.index);
 
@@ -54,3 +60,10 @@ app.get('/predict', predictRoute.predict);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+//var server = app.listen(8081, function () {
+ //  var host = server.address().address
+   //var port = server.address().port
+   
+   //console.log("Example app listening at http://%s:%s", host, port)
+//})
