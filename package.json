@@ -6,12 +6,21 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "alike": "~1.2.0",
+    "alike": "^1.2.0",
+    "body-parser": "^1.18.3",
     "connect": "^3.6.6",
-    "cors": "~2.1.0",
+    "constantinople": "^3.1.2",
+    "cors": "^2.8.5",
+    "errorhandler": "^1.5.0",
     "express": "^4.16.4",
     "jade": "*",
+    "jstransformer": "^1.0.0",
+    "method-override": "^3.0.0",
     "moment": ">=2.19.3",
-    "pg": ">=3.6.4"
+    "morgan": "^1.9.1",
+    "pg": ">=3.6.4",
+    "pug": "^2.0.3",
+    "serve-favicon": "^2.5.0",
+    "serve-static": "^1.13.2"
   }
 }
