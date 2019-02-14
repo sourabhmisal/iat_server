@@ -1,14 +1,18 @@
-
 /**
  * Module dependencies.
  */
-
 var express = require('express');
-cors = require('cors');
+var cors = require('cors');
 var favicon = require('serve-favicon');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var serveStatic = require('serve-static');
+var errorhandler = require('errorhandler');
+
 
 var app = express();
 
@@ -17,17 +21,17 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 //app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-// app.use(cors);
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(morgan('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(cors);
+//app.use(app.router);
+app.use(serveStatic(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorhandler());
 }
 
 app.get('/', routes.index);
