@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 //app.use(express.favicon());
 app.use(morgan('dev'));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(methodOverride());
 app.use(cors);
 //app.use(app.router);
